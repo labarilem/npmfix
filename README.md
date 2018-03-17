@@ -1,5 +1,8 @@
 # npmfix
 
+[![Build Status](https://travis-ci.org/labarilem/npmfix.svg?branch=master)](https://travis-ci.org/labarilem/npmfix)
+[![Known Vulnerabilities](https://snyk.io/test/github/labarilem/npmfix/badge.svg?targetFile=package.json)](https://snyk.io/test/github/labarilem/npmfix?targetFile=package.json)
+
 CLI tool that fixes *weird issues* in projects managing dependencies with NPM.
 
 ## Requirements
