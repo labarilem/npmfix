@@ -88,7 +88,7 @@ describe('npmfix', () => {
         filesBefore = files;
         expect(filesBefore).to.exist;
         expect(filesBefore).to.have.length.greaterThan(0);
-        fix.fixDirectory(workingDir, false, true, false);
+        fix.fixDirectory(workingDir, false, false, true);
         return recursiveReaddir(folderToTest);
 
       }, err => { throw err })
