@@ -16,6 +16,10 @@ function clean() {
   fs.removeSync(testGroundDir);
 }
 
+function handleError(err) {
+  throw err;
+}
+
 describe('npmfix', () => {
 
   before(() => { clean(); setup(); });
@@ -33,10 +37,11 @@ describe('npmfix', () => {
         filesBefore = files;
         expect(filesBefore).to.exist;
         expect(filesBefore).to.have.length.greaterThan(0);
-        fix.fixDirectory(workingDir, false, false, false);
-        return recursiveReaddir(workingDir);
-
-      }, err => { throw err })
+        return fix.fixDirectory(workingDir, false, false, false);
+      }, handleError)
+      .then(() => {
+        return recursiveReaddir(workingDir)
+      }, handleError)
       .then(files => {
 
         filesAfter = files;
@@ -45,7 +50,7 @@ describe('npmfix', () => {
         expect(filesAfter).to.deep.equal(filesBefore);
 
         done();
-      }, err => { throw err });
+      }, handleError);
   });
 
   it('Should correctly delete and preserve files (NM + PkgLock + PkgJson)', (done) => {
@@ -60,19 +65,21 @@ describe('npmfix', () => {
         filesBefore = files;
         expect(filesBefore).to.exist;
         expect(filesBefore).to.have.length.greaterThan(0);
-        fix.fixDirectory(workingDir, false, false, false);
-        return recursiveReaddir(workingDir);
+        return fix.fixDirectory(workingDir, false, false, false);
 
-      }, err => { throw err })
+      }, handleError)
+      .then(() => {
+        return recursiveReaddir(workingDir);
+      }, handleError)
       .then(files => {
 
         filesAfter = files;
         expect(filesAfter).to.exist;
         expect(filesAfter).to.have.length.greaterThan(0);
-        expect(filesAfter).to.deep.equal(filesBefore.filter(f => f.indexOf('node_modules') < 0 && !f.endsWith('package-lock.json') ));
+        expect(filesAfter).to.deep.equal(filesBefore.filter(f => f.indexOf('node_modules') < 0 && !f.endsWith('package-lock.json')));
 
         done();
-      }, err => { throw err });
+      }, handleError);
   });
 
   it('Should correctly delete and preserve files (recursive)', (done) => {
@@ -88,10 +95,12 @@ describe('npmfix', () => {
         filesBefore = files;
         expect(filesBefore).to.exist;
         expect(filesBefore).to.have.length.greaterThan(0);
-        fix.fixDirectory(workingDir, false, false, true);
-        return recursiveReaddir(folderToTest);
+        return fix.fixDirectory(workingDir, false, false, true);
 
-      }, err => { throw err })
+      }, handleError)
+      .then(() => {
+        return recursiveReaddir(folderToTest);
+      }, handleError)
       .then(files => {
 
         filesAfter = files;
@@ -101,7 +110,7 @@ describe('npmfix', () => {
         expect(filesAfter).to.not.deep.equal();
 
         done();
-      }, err => { throw err });
+      }, handleError);
 
   });
 
