@@ -6,6 +6,8 @@
 
 CLI tool that fixes *weird issues* in projects managing dependencies with NPM.
 
+![npmfix image](./docs/images/npmfix.png)
+
 ## Requirements
 
 - NPM
