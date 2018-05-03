@@ -1,6 +1,6 @@
 {
   "name": "npmfix",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Node.js CLI tool that fixes weird issues in projects using npm as package manager.",
   "main": "index.js",
   "preferGlobal": true,
