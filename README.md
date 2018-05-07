@@ -34,14 +34,14 @@ You can pass additional arguments to extend the default behavior. Check out the 
 
 ## Usage
 
-```shell
+```text
 npmfix [options]
 
 Options:
 
   -V, --version    output the version number
   -s, --serious    Serious fix mode: performs time-consuming operations to fix more reliably your projects.
-  -i, --install    Runs 'npm i' after fixing a project.
+  -i, --install    Runs 'npm i' (or the 'setup' script, if available) after fixing a project.
   -r, --recursive  Recursively fix projects. Useful when there are sub-projects in the current folder.
   -h, --help       output usage information
 ```
