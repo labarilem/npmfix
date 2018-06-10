@@ -4,9 +4,11 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/labarilem/npmfix/badge.svg?targetFile=package.json)](https://snyk.io/test/github/labarilem/npmfix?targetFile=package.json)
 [![npm version](https://badge.fury.io/js/npmfix.svg)](https://badge.fury.io/js/npmfix)
 
-CLI tool that fixes *weird issues* in projects managing dependencies with NPM.
+CLI tool that fixes integrity check issues in projects managing dependencies with NPM.
 
 ![npmfix image](./docs/images/npmfix.png)
+
+Check out my [blog post](https://marcolabarile.me/projects/npmfix/) about this project.
 
 ## Requirements
 
@@ -23,7 +25,7 @@ Install the CLI by running this command:
 
 ## How it works
 
-Usually these weird issues are caused by package cache corruption or *package-lock.json* file corruption.
+Usually these issues are caused by package cache corruption or *package-lock.json* file corruption.
 Npmfix fixes these issues with a simple algorithm:
 
 1. Continue only if the current folder has a *package.json* file
